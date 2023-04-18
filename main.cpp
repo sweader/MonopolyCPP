@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "Player.h"
-int main() 
-{
-    return 0;
+int main(){
+    game obj;
+    Player player;
+    return 0;    
 }
