@@ -4,6 +4,7 @@ class Player{
     int money = 0;    
     int position = 0;
     int random = 0;
+    game obj;
     public:
         int makeAMove(){
             srand(time(NULL)); //need this to make everything sorta random
@@ -16,5 +17,10 @@ class Player{
             position += random;
             return position;
 
+        }
+        std::string whereYouLanded(){
+            std::string currProp = obj.propGetter(position);
+            int propPrice = obj.priceGetter(position);
+            return "You're currently on property " + currProp + " it costs "+std::to_string(propPrice)+"\n";
         }
 };
