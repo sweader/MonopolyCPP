@@ -21,6 +21,31 @@ class Player{
         std::string whereYouLanded(){
             std::string currProp = obj.propGetter(position);
             int propPrice = obj.priceGetter(position);
-            return "You're currently on property " + currProp + " it costs "+std::to_string(propPrice)+"\n";
+            return "You're currently on property " + currProp + " it costs "+std::to_string(propPrice)+"\n";  
+        }
+        bool checkIfBought(std::string whatToCheck){
+            int size = obj.getSizeOfBought();
+            for(int i = 0; i < size;i++){
+                if(obj.boughtPropItem(i) == whatToCheck ){
+                    return true;
+                }
+            }
+            return false;
+        }
+        void buyProp(){
+            if(checkIfBought(obj.propGetter(position))){
+                std::cout << "Already bought! \n";               
+                return;
+
+            }
+            if(obj.priceGetter(position) <= money){
+                money-=obj.priceGetter(position);
+                PlayerProps.push_back(obj.propGetter(position));
+                obj.appendToBought(obj.propGetter(position));
+                std::cout<<"You succefully bought "+obj.propGetter(position) +"\n";
+                return;
+            }
+            std::cout<<"Not enough money! \n";
+            return;    
         }
 };
