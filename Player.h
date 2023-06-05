@@ -6,6 +6,9 @@ class Player{
     int random = 0;
     game obj;
     public:
+    Player(){
+        money = 2000;
+    }
         int makeAMove(){
             srand(time(NULL)); //need this to make everything sorta random
             random = 2 + rand() % 13; // makes a move in range from 2 to 12
